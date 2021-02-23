@@ -6,7 +6,7 @@ import re as reg
 import os
 import datetime
 
-
+''''
 # Function for downloading the data.
 def get_data():
     folderpath = '/home/daniel/Projects/mesprojets/Lottery/Complete/data/scratch_games'
@@ -34,7 +34,7 @@ def get_data():
         else:
             print("Today's data found. Using.")
     return filepath
-
+''' # was written to scripts/mod/get_lottery_data.py
 
 
 
@@ -278,7 +278,7 @@ def clean_game(game_df, lump_or_rec = 'lump'):
 
 
 
-
+'''
 # Load games from filepath to JSON file of games.
 def load_games(f):
     # Load JSON and read into variable.
@@ -315,11 +315,10 @@ def load_games(f):
             pass
 
     return (num_name_dic, num_price_dic, games)
+''' # load_games.py
 
 
-
-
-
+'''
 # Define metrics for performance.
 def measure(game_df, price, how = 'all'):
     odds = {x for x in game_df if x.endswith('odds')}
@@ -349,7 +348,7 @@ def measure(game_df, price, how = 'all'):
     else:
         val = {'_'.join([fun, sodds]): func_dic[fun](game_df, sodds) / price for fun in func_dic for sodds in odds}
     return val
-
+''' # measure_game_performance.py
 
 
 
@@ -380,6 +379,8 @@ def analyze_price_performance(games, num_price_dic):
     
 
 def main():
+    # As it stands, need variable `today` representing today to be initialized. Continue working on above to remove this dependency.
+    today = datetime.date.today().isoformat()
     # Get filepath for JSON data.
     print('Getting data.')
     json_filepath = get_data()
